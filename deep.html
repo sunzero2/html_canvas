@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Deep Dive</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const c = canvas.getContext('2d');
+
+        c.fillStyle = 'pink';
+        c.beginPath();
+        c.moveTo(50, 20);
+        c.lineTo(200, 50);
+        c.lineTo(150, 80);
+        c.closePath();
+
+        c.fill();
+        c.strokeStyle = 'magenta';
+        c.lineWidth = 2;
+        c.stroke();
+    </script>
+</body>
+
+</html>

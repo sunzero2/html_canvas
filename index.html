@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- img 태그랑 비슷해보이지만, canvas는 src, alt 속성을 가지지 않음
+    width, height 두 속성만 가짐 -> 정의하지 않을 경우 default 300 x 150
+    CSS에서 with, height 설정할 수 있으나 권장하지 않음 -> 렌더링될 때는 레이아웃 사이즈에 맞춰지기 때문에 초기 캔버스의 비율을 준수하지 않음 -->
+  <canvas id="canvas1" width="150" height="150"></canvas>
+
+  <!-- canvas는 최신 브라우저에서만 지원하므로 구버전 브라우저로 접속하면 canvas 태그 안 텍스트를 렌더링함 -->
+  <canvas>
+    지원하지 않는 브라우저입니다.
+  </canvas>
+  
+  <canvas id="canvas2" width="300" height="300"></canvas>
+  <canvas id="canvas3" width="300" height="300"></canvas>
+
+  <script>
+    const canvas1 = document.getElementById('canvas1');
+    const ctx1 = canvas1.getContext('2d');
+
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(0, 0, 300, 500);
+
+    ctx1.fillStyle = 'rgb(200, 0, 0)';
+    ctx1.fillRect(10, 10, 50, 50);
+    ctx1.fillStyle = 'rgba(0, 0, 200, 0.5)';
+    ctx1.fillRect(30, 30, 50, 50);
+
+    const canvas2 = document.getElementById('canvas2');
+    const ctx2 = canvas2.getContext('2d');
+
+    // Create a linear gradient
+    // The start gradient point is at x=20, y=0
+    // The end gradient point is at x=220, y=0
+    const gradient1 = ctx2.createLinearGradient(0, 0, 0, 300);
+
+    // Add three color stops
+    gradient1.addColorStop(0, 'skyblue');
+    gradient1.addColorStop(.5, 'pink');
+    gradient1.addColorStop(1, 'magenta');
+
+    // Set the fill style and draw a rectangle
+    ctx2.fillStyle = gradient1;
+    ctx2.fillRect(20, 20, 300, 300);
+
+    const canvas3 = document.getElementById('canvas3');
+    const ctx3 = canvas3.getContext('2d');
+
+    // const gradient2 = ctx3.createConicGradient(0, 100, 100);
+    // gradient2.addColorStop(0, 'red');
+    // gradient2.addColorStop(0.25, 'orange');
+    // gradient2.addColorStop(0.5, 'yellow');
+    // gradient2.addColorStop(0.75, 'green');
+    // gradient2.addColorStop(1, 'blue');
+
+    // ctx3.fillStyle = gradient2;
+    // ctx.fillRect(20, 20, 200, 200);
+
+    const gradient2 = ctx3.createRadialGradient(110, 90, 30, 100, 100, 70);
+    gradient2.addColorStop(0, 'pink');
+    gradient2.addColorStop(.9, 'magenta');
+    gradient2.addColorStop(1, 'red');
+
+    ctx3.fillStyle = gradient2;
+    ctx.fillRect(20, 20, 160, 160);
+  </script>
+</body>
+
+</html>
